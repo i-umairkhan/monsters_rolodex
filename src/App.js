@@ -26,21 +26,25 @@ class App extends Component {
       );
   }
 
+  onSearchChange = (event) => {
+    // on every change in search value search state var will change
+    this.setState({ search: event.target.value.toLocaleLowerCase() });
+  };
+
   // to render our component
   render() {
+    const { monsters, search } = this.state;
+    const { onSearchChange } = this;
     // assiging names to newMonsters based on search feild
-    const newMonsters = this.state.monsters.filter((e) => {
-      return e.name.toLocaleLowerCase().includes(this.state.search);
+    const newMonsters = monsters.filter((e) => {
+      return e.name.toLocaleLowerCase().includes(search);
     });
     return (
       <div className="App">
         <input
           placeholder="search monster"
           type="search"
-          onChange={(event) => {
-            // on every change in search value search state var will change
-            this.setState({ search: event.target.value.toLocaleLowerCase() });
-          }}
+          onChange={onSearchChange}
         />
         {newMonsters.map((monster) => {
           // maping over newMOnsters array and displaying in h1
