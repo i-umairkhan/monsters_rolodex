@@ -43,6 +43,8 @@ class App extends Component {
     });
     return (
       <div className="App">
+        {/* Tilte */}
+        <h1 className="app-title">Monsters Rolodoex</h1>
         {/* Search Box Component  */}
         <SearchBox
           className="search-box"
